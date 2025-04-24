@@ -80,7 +80,7 @@ jobs:
         run: |
           docker push ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:$GITHUB_SHA
 
-  deploy:
+  deploy-prod:
     name: Deploy to Cloud Run (Prod)
     runs-on: ubuntu-latest
     needs: build
@@ -107,7 +107,7 @@ jobs:
             --allow-unauthenticated \
             --set-env-vars "ENV_MSG=prod"
 
-  deploy:
+  deploy-staging:
     name: Deploy to Cloud Run (Staging)
     runs-on: ubuntu-latest
     needs: build
