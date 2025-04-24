@@ -105,7 +105,7 @@ jobs:
             --image ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:$GITHUB_SHA \
             --region ${{ env.REGION }} \
             --allow-unauthenticated \
-            --set-env-vars "ENV_MSG=prod"
+            --set-env-vars NODE_ENV=prod
 
   deploy-staging:
     name: Deploy to Cloud Run (Staging)
@@ -132,5 +132,5 @@ jobs:
             --image ${{ env.REGION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.REPOSITORY }}/${{ env.IMAGE }}:$GITHUB_SHA \
             --region ${{ env.REGION }} \
             --allow-unauthenticated \
-            --set-env-vars "ENV_MSG=staging"
+            --set-env-vars NODE_ENV=staging
 

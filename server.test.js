@@ -1,13 +1,18 @@
 // tests/server.test.js
+require('dotenv').config();
 const request = require('supertest');
 const app = require('./server');
 
 describe('GET /', () => {
+  beforeAll(() => {
+    process.env.NODE_ENV = 'test';
+  });
+  
   it('should respond with Hello World! JSON', async () => {
     const response = await request(app).get('/');
     expect(response.statusCode).toBe(200);
     expect(response.headers['content-type']).toMatch(/json/);
-    // expect(response.body).toEqual({ message: 'Hello World from test!' });
+    expect(response.body).toEqual({ message: 'Hello World from test!' });
   });
 });
 

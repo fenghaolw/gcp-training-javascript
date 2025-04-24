@@ -1,13 +1,15 @@
 // server.js
+require('dotenv').config();
 const express = require('express');
 const { process_params } = require('express/lib/router');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const environment = process.env.NODE_ENV || 'production';
 
 app.get('/', (req, res) => {
   console.log('Request for /');
-  res.status(200).json({ message: 'Hello World from %s!' % process.env.ENV_MSG });
+  res.status(200).json({ message: `Hello World from ${environment}!`});
 });
 
 app.get('/health', (req, res) => {
