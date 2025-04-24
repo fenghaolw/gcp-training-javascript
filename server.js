@@ -3,10 +3,11 @@ const express = require('express');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
+const env_message = 'Hello World from %s!' %  process.env.ENV_MSG;
 
 app.get('/', (req, res) => {
   console.log('Request for /');
-  res.status(200).json({ message: 'Hello World!' });
+  res.status(200).json({ message: env_message });
 });
 
 app.get('/health', (req, res) => {
