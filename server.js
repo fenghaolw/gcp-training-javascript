@@ -1,13 +1,13 @@
 // server.js
 const express = require('express');
+const { process_params } = require('express/lib/router');
 
 const app = express();
 const PORT = process.env.PORT || 8080;
-const env_message = 'Hello World from %s!' %  process.env.ENV_MSG;
 
 app.get('/', (req, res) => {
   console.log('Request for /');
-  res.status(200).json({ message: env_message });
+  res.status(200).json({ message: 'Hello World from %s!' % process.env.ENV_MSG });
 });
 
 app.get('/health', (req, res) => {
